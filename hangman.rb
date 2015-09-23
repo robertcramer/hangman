@@ -39,12 +39,12 @@ def show_progress(turn_count, partial_word)
   puts "You have #{turn_count} guesses left."
 end
 
-def prompt_player
+def prompt_player(guesses)
   puts
   puts "Please guess a letter: "
   guess = gets.chomp
-  until guess == guess[/[a-z]/]
-    puts "please guess a single lower case letter."
+  while guesses.include?(guess) || !('a'..'z').to_a.include?(guess)
+    puts "#{guess} is not a letter or already guessed. Please guess again: "
     guess = gets.chomp
   end
   guess
@@ -64,7 +64,7 @@ end
 def take_turn(turn_count, guesses, answer)
   partial_word = make_partial(guesses, answer).join
   show_progress(turn_count, partial_word)
-  prompt_player
+  prompt_player(guesses)
 end
 
 def win?(answer, guesses)

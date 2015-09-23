@@ -56,7 +56,7 @@ def make_partial(guesses, answer)
     if guesses.include?(letter)
       letter
     else
-      " "
+      "-"
     end
   end
 end

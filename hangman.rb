@@ -3,8 +3,13 @@ require "pry"
 replay = "yes"
 until replay == "no"
 
-#puts "Input your word: "
-#word_list = gets.chomp.downcase
+puts "Input your own word? yes or no"
+input = gets.chomp
+unless input == "no"
+puts "Input your word: "
+word_list = gets.chomp.downcase
+answer = word_list
+else
 word_list = [
   "chicken", "duck", "dog", "cat", "clown",
   "brick", "bananas", "totalitarianism",
@@ -12,10 +17,11 @@ word_list = [
   "wednesday", "ruby", "evaluation", "consternation",
   "chicanery"
 ] 
+answer = word_list.sample
+end
 
 turn_count = 6
-answer = word_list.sample
-#answer = word_list
+
 
 def greeting
   puts "\nWelcome to the game of Hangman!\n\n"
